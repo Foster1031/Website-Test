@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scott Foster — Risk Finance Executive & AI Solutions Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- Tokens ---------- */
+:root{
+  --dusk:#2E1A47;
+  --plum:#6B2D5C;
+  --coral:#F0573C;
+  --ember:#FF7A4D;
+  --amber:#FFB347;
+
+  --bg:#FFF7F0;
+  --surface:#FFFFFF;
+  --surface-2:#FFEEE2;
+  --text:#23142F;
+  --text-soft:#6E5A6B;
+  --border:#F2D8C8;
+  --shadow:0 18px 40px -24px rgba(46,26,71,.45);
+  --sunset:linear-gradient(120deg,#6B2D5C 0%,#F0573C 48%,#FFB347 100%);
+
+  --nav-h:68px;
+  --maxw:1120px;
+  --r:18px;
+}
+[data-theme="dark"]{
+  --bg:#140B1F;
+  --surface:#1F132E;
+  --surface-2:#281636;
+  --text:#FBEEE6;
+  --text-soft:#B79DB6;
+  --border:#3A2447;
+  --shadow:0 18px 44px -22px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  transition:background .4s ease,color .4s ease;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+a{color:inherit;text-decoration:none}
+section{scroll-margin-top:var(--nav-h)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);display:inline-block;margin-bottom:14px;
+}
+h2.title{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;
+  letter-spacing:-.02em;margin-bottom:14px;
+}
+.lead{color:var(--text-soft);max-width:54ch;font-size:1.02rem}
+.gradient-text{
+  background:var(--sunset);-webkit-background-clip:text;
+  background-clip:text;color:transparent;
+}
+
+/* ---------- Nav ---------- */
+header.nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;
+  display:flex;align-items:center;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease,background .3s ease;
+}
+header.nav.scrolled{border-bottom-color:var(--border)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+.logo .sun{width:16px;height:16px;border-radius:50%;background:var(--sunset);box-shadow:0 0 14px var(--ember)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:.93rem;font-weight:500;color:var(--text-soft);position:relative;padding:4px 0;transition:color .2s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--sunset);transition:width .25s ease}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a.active::after,.nav-links a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:14px}
+
+.toggle{
+  width:42px;height:42px;border-radius:12px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);cursor:pointer;
+  display:grid;place-items:center;transition:transform .2s,border-color .2s;
+}
+.toggle:hover{transform:translateY(-1px);border-color:var(--coral)}
+.toggle svg{width:19px;height:19px}
+.icon-moon{display:none}
+[data-theme="dark"] .icon-sun{display:none}
+[data-theme="dark"] .icon-moon{display:block}
+
+.hamburger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--surface);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.hamburger span{width:20px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:600;font-size:.95rem;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s}
+.btn-primary{background:var(--sunset);color:#fff;box-shadow:0 12px 26px -12px var(--coral)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px var(--coral)}
+.btn-ghost{background:transparent;border-color:var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--coral);transform:translateY(-2px)}
+
+/* ---------- Language selector ---------- */
+.lang-select{display:flex;align-items:center;gap:13px;margin-bottom:28px;flex-wrap:wrap}
+.lang-label{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-soft)}
+.flags{display:flex;gap:8px}
+.flag{width:34px;height:24px;padding:0;border-radius:5px;overflow:hidden;border:1px solid var(--border);background:none;cursor:pointer;display:block;opacity:.65;transition:transform .2s,box-shadow .2s,border-color .2s,opacity .2s}
+.flag svg{width:100%;height:100%;display:block}
+.flag:hover{transform:translateY(-2px);opacity:1}
+.flag.active{opacity:1;border-color:var(--coral);box-shadow:0 0 0 2px color-mix(in srgb,var(--coral) 38%,transparent)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:var(--nav-h)}
+.hero .glow{
+  position:absolute;left:50%;bottom:-46%;transform:translateX(-50%);
+  width:130vw;max-width:1500px;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,var(--amber) 0%,var(--ember) 24%,var(--coral) 42%,transparent 62%);
+  opacity:.42;filter:blur(8px);pointer-events:none;
+}
+[data-theme="dark"] .hero .glow{opacity:.5}
+.hero .horizon{position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--coral),transparent);opacity:.6}
+.hero-inner{position:relative;z-index:2}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;letter-spacing:-.03em;margin:10px 0 18px}
+.hero p.intro{font-size:1.15rem;color:var(--text-soft);max-width:50ch;margin-bottom:32px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-soft);z-index:2}
+
+/* ---------- Section frame ---------- */
+.block{padding:104px 0}
+.block.tint{background:var(--surface-2);transition:background .4s ease}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.about-text p{color:var(--text-soft);margin-bottom:16px}
+.about-text p strong{color:var(--text);font-weight:600}
+.portrait{aspect-ratio:4/5;border-radius:var(--r);background:var(--sunset);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.portrait::after{content:"SF";position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:5rem;font-weight:600;color:rgba(255,255,255,.92)}
+.stats{display:flex;gap:30px;margin-top:26px;flex-wrap:wrap}
+.stat .n{font-family:'Fraunces',serif;font-size:2rem;font-weight:600}
+.stat .l{font-size:.85rem;color:var(--text-soft)}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:42px}
+.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:26px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.skill-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--coral)}
+.skill-card h3{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.82rem;font-weight:500;padding:6px 12px;border-radius:999px;background:var(--surface-2);color:var(--text-soft);border:1px solid var(--border)}
+
+/* Projects */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px}
+.proj{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:transform .25s,box-shadow .25s}
+.proj:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.proj .cover{height:160px;background:var(--sunset);position:relative}
+.proj:nth-child(2) .cover{background:linear-gradient(135deg,#6B2D5C,#F0573C)}
+.proj:nth-child(3) .cover{background:linear-gradient(135deg,#F0573C,#FFB347)}
+.proj .cover span{position:absolute;top:14px;left:16px;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;color:rgba(255,255,255,.9);text-transform:uppercase}
+.proj .body{padding:22px}
+.proj h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;margin-bottom:8px}
+.proj p{font-size:.92rem;color:var(--text-soft);margin-bottom:14px}
+.proj .link{font-size:.88rem;font-weight:600;color:var(--coral);display:inline-flex;align-items:center;gap:6px}
+.proj .link:hover{gap:10px}
+
+/* Experience timeline */
+.timeline{margin-top:46px;position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--sunset)}
+.tl-item{position:relative;padding-bottom:40px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-30px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:3px solid var(--coral)}
+.tl-date{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;color:var(--coral);margin-bottom:5px}
+.tl-item h3{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600}
+.tl-item .org{color:var(--text-soft);font-weight:500;margin-bottom:8px;font-size:.95rem}
+.tl-item p{color:var(--text-soft);font-size:.93rem;max-width:60ch}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;margin-top:20px}
+.contact-links{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px}
+.contact-links a{display:inline-flex;align-items:center;gap:10px;color:var(--text-soft);font-weight:500;transition:color .2s}
+.contact-links a:hover{color:var(--coral)}
+.contact-links .dot{width:8px;height:8px;border-radius:50%;background:var(--sunset)}
+.form{display:grid;gap:16px}
+.field label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px}
+.field input,.field textarea{width:100%;padding:13px 15px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:inherit;font-size:.95rem;transition:border-color .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--coral);box-shadow:0 0 0 3px color-mix(in srgb,var(--coral) 22%,transparent)}
+.field textarea{resize:vertical;min-height:120px}
+.form-note{font-size:.85rem;color:var(--text-soft)}
+
+/* Footer */
+footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color:var(--text-soft);font-size:.88rem}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* Focus visibility */
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:6px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:860px){
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .skills-grid,.proj-grid{grid-template-columns:1fr 1fr}
+  .portrait{max-width:340px}
+}
+@media (max-width:680px){
+  .hamburger{display:flex}
+  .nav-links{
+    position:fixed;top:var(--nav-h);left:0;right:0;
+    flex-direction:column;gap:0;align-items:stretch;
+    background:var(--surface);border-bottom:1px solid var(--border);
+    padding:8px 0;
+    clip-path:inset(0 0 100% 0);transition:clip-path .35s ease;
+  }
+  .nav-links.open{clip-path:inset(0 0 0 0)}
+  .nav-links a{padding:15px 24px;font-size:1rem}
+  .nav-links a::after{display:none}
+  .skills-grid,.proj-grid{grid-template-columns:1fr}
+  .block{padding:72px 0}
+  .hero p.intro{font-size:1.05rem}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#hero" class="logo"><span class="sun"></span>Scott Foster</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-i18n="navAbout">About</a></li>
+      <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
+      <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+      <li><a href="#experience" data-i18n="navExperience">Experience</a></li>
+      <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="toggle" id="themeToggle" data-i18n-aria="ariaTheme" aria-label="Switch color theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" data-i18n-aria="ariaMenu" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="glow"></div>
+    <div class="horizon"></div>
+    <div class="wrap hero-inner">
+      <div class="lang-select">
+        <span class="lang-label" data-i18n="langLabel">Click a flag to choose your language</span>
+        <div class="flags">
+          <button class="flag" data-lang="en" aria-label="English">
+            <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+              <rect width="28" height="20" fill="#fff"/>
+              <g fill="#B22234"><rect width="28" height="1.54"/><rect y="3.08" width="28" height="1.54"/><rect y="6.15" width="28" height="1.54"/><rect y="9.23" width="28" height="1.54"/><rect y="12.3" width="28" height="1.54"/><rect y="15.38" width="28" height="1.54"/><rect y="18.46" width="28" height="1.54"/></g>
+              <rect width="12" height="10.77" fill="#3C3B6E"/>
+              <g fill="#fff"><circle cx="2.4" cy="2" r=".7"/><circle cx="6" cy="2" r=".7"/><circle cx="9.6" cy="2" r=".7"/><circle cx="4.2" cy="4.2" r=".7"/><circle cx="7.8" cy="4.2" r=".7"/><circle cx="2.4" cy="6.4" r=".7"/><circle cx="6" cy="6.4" r=".7"/><circle cx="9.6" cy="6.4" r=".7"/><circle cx="4.2" cy="8.6" r=".7"/><circle cx="7.8" cy="8.6" r=".7"/></g>
+            </svg>
+          </button>
+          <button class="flag" data-lang="es" aria-label="Español">
+            <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+              <rect width="9.33" height="20" fill="#006847"/>
+              <rect x="9.33" width="9.33" height="20" fill="#fff"/>
+              <rect x="18.66" width="9.34" height="20" fill="#CE1126"/>
+              <circle cx="14" cy="10" r="2.4" fill="#8c6239"/>
+              <circle cx="14" cy="10" r="1.4" fill="#006847"/>
+            </svg>
+          </button>
+          <button class="flag" data-lang="pt" aria-label="Português">
+            <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+              <rect width="28" height="20" fill="#009C3B"/>
+              <polygon points="14,2.4 25.6,10 14,17.6 2.4,10" fill="#FFDF00"/>
+              <circle cx="14" cy="10" r="3.8" fill="#002776"/>
+              <path d="M10.5 9.2 A4 4 0 0 1 17.5 9.6" stroke="#fff" stroke-width=".7" fill="none"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <span class="eyebrow" data-i18n="heroEyebrow">Risk Finance Executive &amp; AI Solutions Architect</span>
+      <h1 data-i18n="heroTitle">Designing interfaces that feel like<br><span class="gradient-text">golden hour.</span></h1>
+      <p class="intro" data-i18n="heroIntro">I shape clear, warm digital products — from first sketch to shipped code. Currently building design systems and the front-ends that bring them to life.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary" data-i18n="ctaWork">View my work →</a>
+        <a href="#contact" class="btn btn-ghost" data-i18n="ctaContact">Get in touch</a>
+      </div>
+    </div>
+    <div class="scroll-hint" data-i18n="scrollHint">Scroll ↓</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <span class="eyebrow" data-i18n="aboutEyebrow">About me</span>
+          <h2 class="title" data-i18n="aboutTitle">A designer who codes, and a developer who sweats the details.</h2>
+          <p data-i18n="aboutP1">I'm Scott — a product designer based in Lisbon with eight years spent moving between Figma and the browser. I care most about the moment a rough idea clicks into something people actually want to use.</p>
+          <p data-i18n="aboutP2">My work lives in the overlap: <strong>design systems, accessible interfaces, and the front-end craft</strong> that keeps a polished mockup polished once it ships. When I'm not pushing pixels, I'm chasing the light with a film camera.</p>
+          <div class="stats">
+            <div class="stat"><div class="n gradient-text">8+</div><div class="l" data-i18n="statYears">Years designing</div></div>
+            <div class="stat"><div class="n gradient-text">40+</div><div class="l" data-i18n="statProducts">Products shipped</div></div>
+            <div class="stat"><div class="n gradient-text">12</div><div class="l" data-i18n="statSystems">Design systems built</div></div>
+          </div>
+        </div>
+        <div class="portrait reveal" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="block tint" id="skills">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="skillsEyebrow">Skills</span>
+        <h2 class="title" data-i18n="skillsTitle">What I bring to the table.</h2>
+        <p class="lead" data-i18n="skillsLead">A toolkit that spans the whole pipeline — from research and visual direction through to production-ready code.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <h3 data-i18n="skillDesign">Design</h3>
+          <div class="chips"><span class="chip">Figma</span><span class="chip" data-i18n="chipSystems">Design systems</span><span class="chip" data-i18n="chipProto">Prototyping</span><span class="chip" data-i18n="chipUX">UX research</span><span class="chip" data-i18n="chipA11y">Accessibility</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <h3 data-i18n="skillFront">Front-end</h3>
+          <div class="chips"><span class="chip">HTML &amp; CSS</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <h3 data-i18n="skillCraft">Craft &amp; tools</h3>
+          <div class="chips"><span class="chip" data-i18n="chipMotion">Motion</span><span class="chip">Git</span><span class="chip">Storybook</span><span class="chip" data-i18n="chipTokens">Design tokens</span><span class="chip">Webflow</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="projEyebrow">Selected work</span>
+        <h2 class="title" data-i18n="projTitle">Projects I'm proud of.</h2>
+        <p class="lead" data-i18n="projLead">A few recent builds where design and engineering met in the middle.</p>
+      </div>
+      <div class="proj-grid">
+        <article class="proj reveal">
+          <div class="cover"><span>Fintech</span></div>
+          <div class="body">
+            <h3>Horizon Banking</h3>
+            <p data-i18n="proj1">Rebuilt a consumer banking app's design system and shipped a 30% faster onboarding flow.</p>
+            <a href="#" class="link" data-i18n="caseStudy">Case study →</a>
+          </div>
+        </article>
+        <article class="proj reveal">
+          <div class="cover"><span>SaaS</span></div>
+          <div class="body">
+            <h3>Ember Analytics</h3>
+            <p data-i18n="proj2">Designed and front-ended a dashboard handling real-time data for 10k daily users.</p>
+            <a href="#" class="link" data-i18n="caseStudy">Case study →</a>
+          </div>
+        </article>
+        <article class="proj reveal">
+          <div class="cover"><span data-i18n="tagBrand">Brand</span></div>
+          <div class="body">
+            <h3>Dusk Studio Site</h3>
+            <p data-i18n="proj3">An award-shortlisted marketing site with scroll-driven motion and a custom CMS.</p>
+            <a href="#" class="link" data-i18n="caseStudy">Case study →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="block tint" id="experience">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="expEyebrow">Experience</span>
+        <h2 class="title" data-i18n="expTitle">Where I've been.</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-date" data-i18n="date1">2022 — Present</div>
+          <h3 data-i18n="role1">Senior Product Designer</h3>
+          <div class="org" data-i18n="org1">Northlight · Lisbon</div>
+          <p data-i18n="desc1">Lead designer for the core platform, owning the design system and partnering with engineering on every front-end release.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-date">2019 — 2022</div>
+          <h3 data-i18n="role2">Product Designer &amp; Front-End Dev</h3>
+          <div class="org" data-i18n="org2">Tidemark Labs · Remote</div>
+          <p data-i18n="desc2">Shipped six client products end to end, from research and UI through to React implementation.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-date">2017 — 2019</div>
+          <h3 data-i18n="role3">UI Designer</h3>
+          <div class="org">Field &amp; Form Agency · Porto</div>
+          <p data-i18n="desc3">Designed marketing sites and brand systems for early-stage startups across Europe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
+          <h2 class="title" data-i18n="contactTitle">Let's make something warm.</h2>
+          <p class="lead" data-i18n="contactLead">Open to freelance projects and full-time roles. Tell me what you're building.</p>
+          <ul class="contact-links">
+            <li><a href="mailto:hello@scottfoster.com"><span class="dot"></span>hello@scottfoster.com</a></li>
+            <li><a href="#"><span class="dot"></span>linkedin.com/in/scottfoster</a></li>
+            <li><a href="#"><span class="dot"></span>github.com/scottfoster</a></li>
+          </ul>
+        </div>
+        <div class="form reveal">
+          <div class="field"><label for="name" data-i18n="labelName">Name</label><input id="name" type="text" data-i18n-placeholder="phName" placeholder="Your name"></div>
+          <div class="field"><label for="email" data-i18n="labelEmail">Email</label><input id="email" type="email" data-i18n-placeholder="phEmail" placeholder="you@email.com"></div>
+          <div class="field"><label for="msg" data-i18n="labelMsg">Message</label><textarea id="msg" data-i18n-placeholder="phMsg" placeholder="A little about your project…"></textarea></div>
+          <button class="btn btn-primary" id="sendBtn" type="button" data-i18n="sendBtn">Send message →</button>
+          <p class="form-note" id="formNote" data-i18n="formNote">This is a demo form — connect it to your own email service or form handler to go live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span data-i18n="footer">Designed &amp; built by Scott Foster · ©</span> <span id="year"></span></div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var nav=document.getElementById('nav');
+  var hamburger=document.getElementById('hamburger');
+  var navLinks=document.getElementById('navLinks');
+  var themeToggle=document.getElementById('themeToggle');
+
+  /* ---------- Translations ---------- */
+  var I18N={
+    en:{
+      docTitle:"Scott Foster — Risk Finance Executive & AI Solutions Architect",
+      langLabel:"Click a flag to choose your language",
+      navAbout:"About",navSkills:"Skills",navProjects:"Projects",navExperience:"Experience",navContact:"Contact",
+      ariaTheme:"Switch color theme",ariaMenu:"Open menu",
+      heroEyebrow:"Risk Finance Executive &amp; AI Solutions Architect",
+      heroTitle:'Designing interfaces that feel like<br><span class="gradient-text">golden hour.</span>',
+      heroIntro:"I shape clear, warm digital products — from first sketch to shipped code. Currently building design systems and the front-ends that bring them to life.",
+      ctaWork:"View my work →",ctaContact:"Get in touch",scrollHint:"Scroll ↓",
+      aboutEyebrow:"About me",
+      aboutTitle:"A designer who codes, and a developer who sweats the details.",
+      aboutP1:"I'm Scott — a product designer based in Lisbon with eight years spent moving between Figma and the browser. I care most about the moment a rough idea clicks into something people actually want to use.",
+      aboutP2:'My work lives in the overlap: <strong>design systems, accessible interfaces, and the front-end craft</strong> that keeps a polished mockup polished once it ships. When I\'m not pushing pixels, I\'m chasing the light with a film camera.',
+      statYears:"Years designing",statProducts:"Products shipped",statSystems:"Design systems built",
+      skillsEyebrow:"Skills",skillsTitle:"What I bring to the table.",
+      skillsLead:"A toolkit that spans the whole pipeline — from research and visual direction through to production-ready code.",
+      skillDesign:"Design",skillFront:"Front-end",skillCraft:"Craft &amp; tools",
+      chipSystems:"Design systems",chipProto:"Prototyping",chipUX:"UX research",chipA11y:"Accessibility",chipMotion:"Motion",chipTokens:"Design tokens",
+      projEyebrow:"Selected work",projTitle:"Projects I'm proud of.",
+      projLead:"A few recent builds where design and engineering met in the middle.",
+      tagBrand:"Brand",caseStudy:"Case study →",
+      proj1:"Rebuilt a consumer banking app's design system and shipped a 30% faster onboarding flow.",
+      proj2:"Designed and front-ended a dashboard handling real-time data for 10k daily users.",
+      proj3:"An award-shortlisted marketing site with scroll-driven motion and a custom CMS.",
+      expEyebrow:"Experience",expTitle:"Where I've been.",
+      date1:"2022 — Present",
+      role1:"Senior Product Designer",org1:"Northlight · Lisbon",
+      desc1:"Lead designer for the core platform, owning the design system and partnering with engineering on every front-end release.",
+      role2:"Product Designer &amp; Front-End Dev",org2:"Tidemark Labs · Remote",
+      desc2:"Shipped six client products end to end, from research and UI through to React implementation.",
+      role3:"UI Designer",
+      desc3:"Designed marketing sites and brand systems for early-stage startups across Europe.",
+      contactEyebrow:"Contact",contactTitle:"Let's make something warm.",
+      contactLead:"Open to freelance projects and full-time roles. Tell me what you're building.",
+      labelName:"Name",labelEmail:"Email",labelMsg:"Message",
+      phName:"Your name",phEmail:"you@email.com",phMsg:"A little about your project…",
+      sendBtn:"Send message →",
+      formNote:"This is a demo form — connect it to your own email service or form handler to go live.",
+      formSent:"Thanks! This demo doesn't send yet — wire it up to your form handler.",
+      footer:"Designed &amp; built by Scott Foster · ©"
+    },
+    es:{
+      docTitle:"Scott Foster — Ejecutivo de Finanzas de Riesgo y Arquitecto de Soluciones de IA",
+      langLabel:"Haz clic en una bandera para elegir tu idioma",
+      navAbout:"Sobre mí",navSkills:"Habilidades",navProjects:"Proyectos",navExperience:"Experiencia",navContact:"Contacto",
+      ariaTheme:"Cambiar tema de color",ariaMenu:"Abrir menú",
+      heroEyebrow:"Ejecutivo de Finanzas de Riesgo y Arquitecto de Soluciones de IA",
+      heroTitle:'Creando interfaces que se sienten como<br><span class="gradient-text">la hora dorada.</span>',
+      heroIntro:"Doy forma a productos digitales claros y cálidos — desde el primer boceto hasta el código en producción. Actualmente construyo sistemas de diseño y los front-ends que les dan vida.",
+      ctaWork:"Ver mi trabajo →",ctaContact:"Contáctame",scrollHint:"Desliza ↓",
+      aboutEyebrow:"Sobre mí",
+      aboutTitle:"Un diseñador que programa y un desarrollador que cuida cada detalle.",
+      aboutP1:"Soy Scott, diseñador de producto radicado en Lisboa con ocho años moviéndome entre Figma y el navegador. Lo que más me importa es el momento en que una idea en bruto se convierte en algo que la gente realmente quiere usar.",
+      aboutP2:'Mi trabajo vive en la intersección: <strong>sistemas de diseño, interfaces accesibles y el oficio del front-end</strong> que mantiene impecable un mockup cuando llega a producción. Cuando no estoy moviendo píxeles, persigo la luz con una cámara de película.',
+      statYears:"Años diseñando",statProducts:"Productos lanzados",statSystems:"Sistemas de diseño creados",
+      skillsEyebrow:"Habilidades",skillsTitle:"Lo que aporto.",
+      skillsLead:"Un conjunto de herramientas que abarca todo el proceso — desde la investigación y la dirección visual hasta el código listo para producción.",
+      skillDesign:"Diseño",skillFront:"Front-end",skillCraft:"Oficio y herramientas",
+      chipSystems:"Sistemas de diseño",chipProto:"Prototipado",chipUX:"Investigación UX",chipA11y:"Accesibilidad",chipMotion:"Animación",chipTokens:"Tokens de diseño",
+      projEyebrow:"Trabajo seleccionado",projTitle:"Proyectos de los que estoy orgulloso.",
+      projLead:"Algunos proyectos recientes donde el diseño y la ingeniería se encontraron a medio camino.",
+      tagBrand:"Marca",caseStudy:"Ver caso →",
+      proj1:"Rediseñé el sistema de diseño de una app bancaria y lancé un onboarding un 30% más rápido.",
+      proj2:"Diseñé y desarrollé el front-end de un panel con datos en tiempo real para 10 mil usuarios diarios.",
+      proj3:"Un sitio de marketing finalista de premios, con animación al hacer scroll y un CMS a medida.",
+      expEyebrow:"Experiencia",expTitle:"Dónde he estado.",
+      date1:"2022 — Actualidad",
+      role1:"Diseñador de Producto Senior",org1:"Northlight · Lisboa",
+      desc1:"Diseñador principal de la plataforma central, responsable del sistema de diseño y socio de ingeniería en cada lanzamiento de front-end.",
+      role2:"Diseñador de Producto y Dev Front-End",org2:"Tidemark Labs · Remoto",
+      desc2:"Lancé seis productos para clientes de principio a fin, desde la investigación y la UI hasta la implementación en React.",
+      role3:"Diseñador de UI",
+      desc3:"Diseñé sitios de marketing y sistemas de marca para startups en etapa inicial por toda Europa.",
+      contactEyebrow:"Contacto",contactTitle:"Hagamos algo cálido.",
+      contactLead:"Disponible para proyectos freelance y puestos a tiempo completo. Cuéntame qué estás construyendo.",
+      labelName:"Nombre",labelEmail:"Correo",labelMsg:"Mensaje",
+      phName:"Tu nombre",phEmail:"tu@correo.com",phMsg:"Algo sobre tu proyecto…",
+      sendBtn:"Enviar mensaje →",
+      formNote:"Este es un formulario de demostración: conéctalo a tu propio servicio de correo o gestor de formularios para activarlo.",
+      formSent:"¡Gracias! Esta demo aún no envía — conéctala a tu gestor de formularios.",
+      footer:"Diseñado y construido por Scott Foster · ©"
+    },
+    pt:{
+      docTitle:"Scott Foster — Executivo de Finanças de Risco e Arquiteto de Soluções de IA",
+      langLabel:"Clique em uma bandeira para escolher seu idioma",
+      navAbout:"Sobre",navSkills:"Habilidades",navProjects:"Projetos",navExperience:"Experiência",navContact:"Contato",
+      ariaTheme:"Alternar tema de cor",ariaMenu:"Abrir menu",
+      heroEyebrow:"Executivo de Finanças de Risco e Arquiteto de Soluções de IA",
+      heroTitle:'Criando interfaces que parecem a<br><span class="gradient-text">hora dourada.</span>',
+      heroIntro:"Dou forma a produtos digitais claros e acolhedores — do primeiro esboço ao código em produção. Atualmente construo design systems e os front-ends que lhes dão vida.",
+      ctaWork:"Ver meu trabalho →",ctaContact:"Fale comigo",scrollHint:"Role ↓",
+      aboutEyebrow:"Sobre mim",
+      aboutTitle:"Um designer que programa e um desenvolvedor que cuida de cada detalhe.",
+      aboutP1:"Sou Scott, designer de produto baseado em Lisboa, com oito anos transitando entre o Figma e o navegador. O que mais me importa é o momento em que uma ideia bruta vira algo que as pessoas realmente querem usar.",
+      aboutP2:'Meu trabalho vive na interseção: <strong>design systems, interfaces acessíveis e o ofício do front-end</strong> que mantém um mockup impecável quando vai para produção. Quando não estou mexendo em pixels, persigo a luz com uma câmera de filme.',
+      statYears:"Anos desenhando",statProducts:"Produtos lançados",statSystems:"Design systems criados",
+      skillsEyebrow:"Habilidades",skillsTitle:"O que eu trago.",
+      skillsLead:"Um conjunto de ferramentas que abrange todo o processo — da pesquisa e direção visual ao código pronto para produção.",
+      skillDesign:"Design",skillFront:"Front-end",skillCraft:"Ofício e ferramentas",
+      chipSystems:"Design systems",chipProto:"Prototipagem",chipUX:"Pesquisa UX",chipA11y:"Acessibilidade",chipMotion:"Animação",chipTokens:"Design tokens",
+      projEyebrow:"Trabalhos selecionados",projTitle:"Projetos dos quais me orgulho.",
+      projLead:"Alguns projetos recentes onde design e engenharia se encontraram no meio do caminho.",
+      tagBrand:"Marca",caseStudy:"Ver case →",
+      proj1:"Reconstruí o design system de um app bancário e entreguei um onboarding 30% mais rápido.",
+      proj2:"Desenhei e desenvolvi o front-end de um painel com dados em tempo real para 10 mil usuários diários.",
+      proj3:"Um site de marketing finalista de prêmios, com animação ao rolar e um CMS sob medida.",
+      expEyebrow:"Experiência",expTitle:"Por onde passei.",
+      date1:"2022 — Atual",
+      role1:"Designer de Produto Sênior",org1:"Northlight · Lisboa",
+      desc1:"Designer principal da plataforma central, responsável pelo design system e parceiro da engenharia em cada release de front-end.",
+      role2:"Designer de Produto e Dev Front-End",org2:"Tidemark Labs · Remoto",
+      desc2:"Entreguei seis produtos para clientes de ponta a ponta, da pesquisa e UI até a implementação em React.",
+      role3:"Designer de UI",
+      desc3:"Desenhei sites de marketing e sistemas de marca para startups em estágio inicial por toda a Europa.",
+      contactEyebrow:"Contato",contactTitle:"Vamos criar algo acolhedor.",
+      contactLead:"Disponível para projetos freelance e vagas em tempo integral. Conte-me o que você está construindo.",
+      labelName:"Nome",labelEmail:"E-mail",labelMsg:"Mensagem",
+      phName:"Seu nome",phEmail:"voce@email.com",phMsg:"Um pouco sobre seu projeto…",
+      sendBtn:"Enviar mensagem →",
+      formNote:"Este é um formulário de demonstração: conecte-o ao seu próprio serviço de e-mail ou gerenciador de formulários para ativá-lo.",
+      formSent:"Obrigado! Esta demo ainda não envia — conecte-a ao seu gerenciador de formulários.",
+      footer:"Projetado e construído por Scott Foster · ©"
+    }
+  };
+
+  var currentLang='en';
+
+  function applyLang(lang){
+    var t=I18N[lang]||I18N.en;
+    currentLang=lang;
+    root.setAttribute('lang',lang);
+    document.title=t.docTitle;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k=el.getAttribute('data-i18n');
+      if(t[k]!=null) el.innerHTML=t[k];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+      var k=el.getAttribute('data-i18n-placeholder');
+      if(t[k]!=null) el.setAttribute('placeholder',t[k]);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
+      var k=el.getAttribute('data-i18n-aria');
+      if(t[k]!=null) el.setAttribute('aria-label',t[k]);
+    });
+    document.querySelectorAll('.flag').forEach(function(f){
+      f.classList.toggle('active',f.getAttribute('data-lang')===lang);
+    });
+    try{localStorage.setItem('lang',lang);}catch(e){}
+  }
+
+  document.querySelectorAll('.flag').forEach(function(f){
+    f.addEventListener('click',function(){applyLang(f.getAttribute('data-lang'));});
+  });
+
+  // Restore language: saved choice, then browser preference, else English
+  var startLang='en';
+  try{
+    var savedLang=localStorage.getItem('lang');
+    if(savedLang&&I18N[savedLang]) startLang=savedLang;
+    else{
+      var nl=(navigator.language||'en').slice(0,2);
+      if(I18N[nl]) startLang=nl;
+    }
+  }catch(e){}
+  applyLang(startLang);
+
+  /* ---------- Theme ---------- */
+  try{
+    var saved=localStorage.getItem('theme');
+    if(saved){root.setAttribute('data-theme',saved);}
+    else if(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches){root.setAttribute('data-theme','dark');}
+  }catch(e){}
+  themeToggle.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+
+  /* ---------- Mobile menu ---------- */
+  hamburger.addEventListener('click',function(){
+    var open=navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open',open);
+    hamburger.setAttribute('aria-expanded',open);
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* ---------- Nav border on scroll ---------- */
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>10);}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* ---------- Active link highlighting ---------- */
+  var links=Array.prototype.slice.call(navLinks.querySelectorAll('a'));
+  var sections=links.map(function(l){return document.querySelector(l.getAttribute('href'));});
+  var spy=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+en.target.id);});
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(function(s){if(s)spy.observe(s);});
+
+  /* ---------- Scroll reveal ---------- */
+  var reveals=document.querySelectorAll('.reveal');
+  var ro=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target);}});
+  },{threshold:.15});
+  reveals.forEach(function(r){ro.observe(r);});
+
+  /* ---------- Demo form feedback ---------- */
+  document.getElementById('sendBtn').addEventListener('click',function(){
+    document.getElementById('formNote').textContent=(I18N[currentLang]||I18N.en).formSent;
+  });
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
