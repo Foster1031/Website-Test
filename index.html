@@ -8,34 +8,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* ---------- Tokens ---------- */
+/* ---------- Tokens (blue / grey) ---------- */
 :root{
-  --dusk:#2E1A47;
-  --plum:#6B2D5C;
-  --coral:#F0573C;
-  --ember:#FF7A4D;
-  --amber:#FFB347;
+  --dusk:#0F1E33;
+  --plum:#1E3A5F;
+  --coral:#2563EB;   /* primary accent (links, focus, active) */
+  --ember:#3B82F6;   /* mid blue (glow) */
+  --amber:#7DB3F0;   /* light blue (glow highlight) */
 
-  --bg:#FFF7F0;
+  --bg:#F5F7FA;
   --surface:#FFFFFF;
-  --surface-2:#FFEEE2;
-  --text:#23142F;
-  --text-soft:#6E5A6B;
-  --border:#F2D8C8;
-  --shadow:0 18px 40px -24px rgba(46,26,71,.45);
-  --sunset:linear-gradient(120deg,#6B2D5C 0%,#F0573C 48%,#FFB347 100%);
+  --surface-2:#EAF0F6;
+  --text:#16202E;
+  --text-soft:#5A6B7E;
+  --border:#DCE4ED;
+  --shadow:0 18px 40px -24px rgba(30,58,95,.45);
+  --sunset:linear-gradient(120deg,#1E3A5F 0%,#2563EB 48%,#4F9CF9 100%);
 
   --nav-h:68px;
   --maxw:1120px;
   --r:18px;
 }
 [data-theme="dark"]{
-  --bg:#140B1F;
-  --surface:#1F132E;
-  --surface-2:#281636;
-  --text:#FBEEE6;
-  --text-soft:#B79DB6;
-  --border:#3A2447;
+  --bg:#0E1726;
+  --surface:#16223A;
+  --surface-2:#1C2A45;
+  --text:#E8EEF6;
+  --text-soft:#9DB0C6;
+  --border:#2A3A56;
   --shadow:0 18px 44px -22px rgba(0,0,0,.7);
 }
 
@@ -132,13 +132,13 @@ header.nav.scrolled{border-bottom-color:var(--border)}
   position:absolute;left:50%;bottom:-46%;transform:translateX(-50%);
   width:130vw;max-width:1500px;aspect-ratio:1;border-radius:50%;
   background:radial-gradient(circle at 50% 50%,var(--amber) 0%,var(--ember) 24%,var(--coral) 42%,transparent 62%);
-  opacity:.42;filter:blur(8px);pointer-events:none;
+  opacity:.34;filter:blur(8px);pointer-events:none;
 }
-[data-theme="dark"] .hero .glow{opacity:.5}
+[data-theme="dark"] .hero .glow{opacity:.45}
 .hero .horizon{position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--coral),transparent);opacity:.6}
 .hero-inner{position:relative;z-index:2}
 .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;letter-spacing:-.03em;margin:10px 0 18px}
-.hero p.intro{font-size:1.15rem;color:var(--text-soft);max-width:50ch;margin-bottom:32px}
+.hero p.intro{font-size:1.15rem;color:var(--text-soft);max-width:52ch;margin-bottom:32px}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-soft);z-index:2}
 
@@ -154,7 +154,7 @@ header.nav.scrolled{border-bottom-color:var(--border)}
 .portrait::after{content:"SF";position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:5rem;font-weight:600;color:rgba(255,255,255,.92)}
 .stats{display:flex;gap:30px;margin-top:26px;flex-wrap:wrap}
 .stat .n{font-family:'Fraunces',serif;font-size:2rem;font-weight:600}
-.stat .l{font-size:.85rem;color:var(--text-soft)}
+.stat .l{font-size:.85rem;color:var(--text-soft);max-width:16ch}
 
 /* Skills */
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:42px}
@@ -164,19 +164,17 @@ header.nav.scrolled{border-bottom-color:var(--border)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{font-size:.82rem;font-weight:500;padding:6px 12px;border-radius:999px;background:var(--surface-2);color:var(--text-soft);border:1px solid var(--border)}
 
-/* Projects */
+/* Highlights */
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px}
 .proj{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:transform .25s,box-shadow .25s}
 .proj:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.proj .cover{height:160px;background:var(--sunset);position:relative}
-.proj:nth-child(2) .cover{background:linear-gradient(135deg,#6B2D5C,#F0573C)}
-.proj:nth-child(3) .cover{background:linear-gradient(135deg,#F0573C,#FFB347)}
-.proj .cover span{position:absolute;top:14px;left:16px;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;color:rgba(255,255,255,.9);text-transform:uppercase}
+.proj .cover{height:128px;background:var(--sunset);position:relative}
+.proj:nth-child(2) .cover{background:linear-gradient(135deg,#1E3A5F,#2563EB)}
+.proj:nth-child(3) .cover{background:linear-gradient(135deg,#2563EB,#4F9CF9)}
+.proj .cover span{position:absolute;top:14px;left:16px;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;color:rgba(255,255,255,.92);text-transform:uppercase}
 .proj .body{padding:22px}
-.proj h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;margin-bottom:8px}
-.proj p{font-size:.92rem;color:var(--text-soft);margin-bottom:14px}
-.proj .link{font-size:.88rem;font-weight:600;color:var(--coral);display:inline-flex;align-items:center;gap:6px}
-.proj .link:hover{gap:10px}
+.proj h3{font-family:'Fraunces',serif;font-size:1.22rem;font-weight:600;margin-bottom:8px}
+.proj p{font-size:.92rem;color:var(--text-soft)}
 
 /* Experience timeline */
 .timeline{margin-top:46px;position:relative;padding-left:30px}
@@ -187,14 +185,14 @@ header.nav.scrolled{border-bottom-color:var(--border)}
 .tl-date{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;color:var(--coral);margin-bottom:5px}
 .tl-item h3{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600}
 .tl-item .org{color:var(--text-soft);font-weight:500;margin-bottom:8px;font-size:.95rem}
-.tl-item p{color:var(--text-soft);font-size:.93rem;max-width:60ch}
+.tl-item p{color:var(--text-soft);font-size:.93rem;max-width:62ch}
 
 /* Contact */
 .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;margin-top:20px}
 .contact-links{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px}
-.contact-links a{display:inline-flex;align-items:center;gap:10px;color:var(--text-soft);font-weight:500;transition:color .2s}
+.contact-links a,.contact-links .item{display:inline-flex;align-items:center;gap:10px;color:var(--text-soft);font-weight:500;transition:color .2s}
 .contact-links a:hover{color:var(--coral)}
-.contact-links .dot{width:8px;height:8px;border-radius:50%;background:var(--sunset)}
+.contact-links .dot{width:8px;height:8px;border-radius:50%;background:var(--sunset);flex:none}
 .form{display:grid;gap:16px}
 .field label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px}
 .field input,.field textarea{width:100%;padding:13px 15px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:inherit;font-size:.95rem;transition:border-color .2s}
@@ -244,7 +242,7 @@ footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" data-i18n="navAbout">About</a></li>
       <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
-      <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+      <li><a href="#projects" data-i18n="navProjects">Highlights</a></li>
       <li><a href="#experience" data-i18n="navExperience">Experience</a></li>
       <li><a href="#contact" data-i18n="navContact">Contact</a></li>
     </ul>
@@ -297,10 +295,10 @@ footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color
         </div>
       </div>
       <span class="eyebrow" data-i18n="heroEyebrow">Risk Finance Executive &amp; AI Solutions Architect</span>
-      <h1 data-i18n="heroTitle">Designing interfaces that feel like<br><span class="gradient-text">golden hour.</span></h1>
-      <p class="intro" data-i18n="heroIntro">I shape clear, warm digital products — from first sketch to shipped code. Currently building design systems and the front-ends that bring them to life.</p>
+      <h1 data-i18n="heroTitle">Bringing AI to the frontier of<br><span class="gradient-text">financial risk.</span></h1>
+      <p class="intro" data-i18n="heroIntro">Corporate finance and business intelligence leader turning raw data into board-ready decisions — and pioneering the use of AI within enterprise risk management.</p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary" data-i18n="ctaWork">View my work →</a>
+        <a href="#projects" class="btn btn-primary" data-i18n="ctaWork">See my work →</a>
         <a href="#contact" class="btn btn-ghost" data-i18n="ctaContact">Get in touch</a>
       </div>
     </div>
@@ -313,13 +311,13 @@ footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color
       <div class="about-grid">
         <div class="about-text reveal">
           <span class="eyebrow" data-i18n="aboutEyebrow">About me</span>
-          <h2 class="title" data-i18n="aboutTitle">A designer who codes, and a developer who sweats the details.</h2>
-          <p data-i18n="aboutP1">I'm Scott — a product designer based in Lisbon with eight years spent moving between Figma and the browser. I care most about the moment a rough idea clicks into something people actually want to use.</p>
-          <p data-i18n="aboutP2">My work lives in the overlap: <strong>design systems, accessible interfaces, and the front-end craft</strong> that keeps a polished mockup polished once it ships. When I'm not pushing pixels, I'm chasing the light with a film camera.</p>
+          <h2 class="title" data-i18n="aboutTitle">A finance leader fluent in data, risk, and now AI.</h2>
+          <p data-i18n="aboutP1">I'm Scott Foster, a corporate finance and business intelligence leader based in Jacksonville, Florida, with an MBA in Finance &amp; Management from Fordham University. For two decades I've defined, collected, and translated complex financial and risk data into information any level of management can act on.</p>
+          <p data-i18n="aboutP2">At Fidelity National Financial I'm <strong>pioneering AI development within the enterprise risk management group</strong>, where I led the first production use case for AI in the company's financial sensitivity models. My foundation is advanced financial modeling, SQL data warehousing, and the big-data platforms that turn raw information into decisions.</p>
           <div class="stats">
-            <div class="stat"><div class="n gradient-text">8+</div><div class="l" data-i18n="statYears">Years designing</div></div>
-            <div class="stat"><div class="n gradient-text">40+</div><div class="l" data-i18n="statProducts">Products shipped</div></div>
-            <div class="stat"><div class="n gradient-text">12</div><div class="l" data-i18n="statSystems">Design systems built</div></div>
+            <div class="stat"><div class="n gradient-text">20+</div><div class="l" data-i18n="statYears">Years in finance &amp; risk</div></div>
+            <div class="stat"><div class="n gradient-text">$1.5B</div><div class="l" data-i18n="statProducts">Reserve position modeled</div></div>
+            <div class="stat"><div class="n gradient-text">1st</div><div class="l" data-i18n="statSystems">AI use case in production</div></div>
           </div>
         </div>
         <div class="portrait reveal" aria-hidden="true"></div>
@@ -333,56 +331,53 @@ footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color
       <div class="reveal">
         <span class="eyebrow" data-i18n="skillsEyebrow">Skills</span>
         <h2 class="title" data-i18n="skillsTitle">What I bring to the table.</h2>
-        <p class="lead" data-i18n="skillsLead">A toolkit that spans the whole pipeline — from research and visual direction through to production-ready code.</p>
+        <p class="lead" data-i18n="skillsLead">Two decades turning financial and risk data into decisions — now extended with applied AI.</p>
       </div>
       <div class="skills-grid">
         <div class="skill-card reveal">
-          <h3 data-i18n="skillDesign">Design</h3>
-          <div class="chips"><span class="chip">Figma</span><span class="chip" data-i18n="chipSystems">Design systems</span><span class="chip" data-i18n="chipProto">Prototyping</span><span class="chip" data-i18n="chipUX">UX research</span><span class="chip" data-i18n="chipA11y">Accessibility</span></div>
+          <h3 data-i18n="skillFin">Finance &amp; Risk</h3>
+          <div class="chips"><span class="chip" data-i18n="c1a">Financial modeling</span><span class="chip" data-i18n="c1b">ORSA &amp; stress testing</span><span class="chip" data-i18n="c1c">Reserve analysis</span><span class="chip" data-i18n="c1d">Forecasting</span><span class="chip" data-i18n="c1e">Budgeting</span></div>
         </div>
         <div class="skill-card reveal">
-          <h3 data-i18n="skillFront">Front-end</h3>
-          <div class="chips"><span class="chip">HTML &amp; CSS</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span></div>
+          <h3 data-i18n="skillAI">AI &amp; Data</h3>
+          <div class="chips"><span class="chip" data-i18n="c2a">AI use cases</span><span class="chip" data-i18n="c2b">Sensitivity modeling</span><span class="chip">SQL</span><span class="chip" data-i18n="c2d">Data warehousing</span><span class="chip" data-i18n="c2e">Big data</span></div>
         </div>
         <div class="skill-card reveal">
-          <h3 data-i18n="skillCraft">Craft &amp; tools</h3>
-          <div class="chips"><span class="chip" data-i18n="chipMotion">Motion</span><span class="chip">Git</span><span class="chip">Storybook</span><span class="chip" data-i18n="chipTokens">Design tokens</span><span class="chip">Webflow</span></div>
+          <h3 data-i18n="skillBI">Business Intelligence</h3>
+          <div class="chips"><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Cognos</span><span class="chip">Hyperion</span><span class="chip">MicroStrategy</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- HIGHLIGHTS -->
   <section class="block" id="projects">
     <div class="wrap">
       <div class="reveal">
-        <span class="eyebrow" data-i18n="projEyebrow">Selected work</span>
-        <h2 class="title" data-i18n="projTitle">Projects I'm proud of.</h2>
-        <p class="lead" data-i18n="projLead">A few recent builds where design and engineering met in the middle.</p>
+        <span class="eyebrow" data-i18n="projEyebrow">Career highlights</span>
+        <h2 class="title" data-i18n="projTitle">Work I'm proud of.</h2>
+        <p class="lead" data-i18n="projLead">A few initiatives where finance, risk, and technology came together.</p>
       </div>
       <div class="proj-grid">
         <article class="proj reveal">
-          <div class="cover"><span>Fintech</span></div>
+          <div class="cover"><span data-i18n="tag1">AI</span></div>
           <div class="body">
-            <h3>Horizon Banking</h3>
-            <p data-i18n="proj1">Rebuilt a consumer banking app's design system and shipped a 30% faster onboarding flow.</p>
-            <a href="#" class="link" data-i18n="caseStudy">Case study →</a>
+            <h3 data-i18n="projT1">AI in Sensitivity Models</h3>
+            <p data-i18n="proj1">Led the first production use case for AI in the company's financial sensitivity models — pioneering AI development across the enterprise risk group.</p>
           </div>
         </article>
         <article class="proj reveal">
-          <div class="cover"><span>SaaS</span></div>
+          <div class="cover"><span data-i18n="tag2">Risk</span></div>
           <div class="body">
-            <h3>Ember Analytics</h3>
-            <p data-i18n="proj2">Designed and front-ended a dashboard handling real-time data for 10k daily users.</p>
-            <a href="#" class="link" data-i18n="caseStudy">Case study →</a>
+            <h3 data-i18n="projT2">ORSA Stress Testing</h3>
+            <p data-i18n="proj2">Own all models and databases behind the Own Risk &amp; Solvency Assessment — the stress tests gauging how material risks affect the insurance group's solvency under Florida law.</p>
           </div>
         </article>
         <article class="proj reveal">
-          <div class="cover"><span data-i18n="tagBrand">Brand</span></div>
+          <div class="cover"><span data-i18n="tag3">BI</span></div>
           <div class="body">
-            <h3>Dusk Studio Site</h3>
-            <p data-i18n="proj3">An award-shortlisted marketing site with scroll-driven motion and a custom CMS.</p>
-            <a href="#" class="link" data-i18n="caseStudy">Case study →</a>
+            <h3 data-i18n="projT3">Executive Risk Dashboards</h3>
+            <p data-i18n="proj3">Built BI models and dashboards uniting statutory, GAAP, operational and risk data for Risk, Finance and Legal leaders — plus the quarterly risk decks presented to the Board.</p>
           </div>
         </article>
       </div>
@@ -398,22 +393,28 @@ footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color
       </div>
       <div class="timeline">
         <div class="tl-item reveal">
-          <div class="tl-date" data-i18n="date1">2022 — Present</div>
-          <h3 data-i18n="role1">Senior Product Designer</h3>
-          <div class="org" data-i18n="org1">Northlight · Lisbon</div>
-          <p data-i18n="desc1">Lead designer for the core platform, owning the design system and partnering with engineering on every front-end release.</p>
+          <div class="tl-date" data-i18n="date1">2018 — Present</div>
+          <h3 data-i18n="role1">Sr. Financial Risk Analyst / AVP</h3>
+          <div class="org" data-i18n="org1">Fidelity National Financial · Jacksonville, FL</div>
+          <p data-i18n="desc1">Own the models behind the Own Risk &amp; Solvency Assessment and the quarterly Claims Memo on the company's ~$1.5B reserve position. Produce Board-level risk decks — and pioneer AI within the risk group.</p>
         </div>
         <div class="tl-item reveal">
-          <div class="tl-date">2019 — 2022</div>
-          <h3 data-i18n="role2">Product Designer &amp; Front-End Dev</h3>
-          <div class="org" data-i18n="org2">Tidemark Labs · Remote</div>
-          <p data-i18n="desc2">Shipped six client products end to end, from research and UI through to React implementation.</p>
+          <div class="tl-date" data-i18n="date2">2016 — 2017</div>
+          <h3 data-i18n="role2">Sr. Business Analyst / Director of BI</h3>
+          <div class="org" data-i18n="org2">Veterans Trading Company · Ocala, FL</div>
+          <p data-i18n="desc2">Ran the SQL-based ERP and Power BI platform, built data warehouses from disparate systems, and modeled production and delivery for major defense programs.</p>
         </div>
         <div class="tl-item reveal">
-          <div class="tl-date">2017 — 2019</div>
-          <h3 data-i18n="role3">UI Designer</h3>
-          <div class="org">Field &amp; Form Agency · Porto</div>
-          <p data-i18n="desc3">Designed marketing sites and brand systems for early-stage startups across Europe.</p>
+          <div class="tl-date" data-i18n="date3">2014 — 2016</div>
+          <h3 data-i18n="role3">Sr. Business / Financial Analyst</h3>
+          <div class="org" data-i18n="org3">Fanatics Inc. · Jacksonville, FL</div>
+          <p data-i18n="desc3">Created the margin forecasting model — an interactive P&amp;L letting executives see the impact of decisions in real time — and revenue-share models for the major sports leagues.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-date" data-i18n="date4">2006 — 2013</div>
+          <h3 data-i18n="role4">Sr. Financial &amp; Operations Analyst</h3>
+          <div class="org" data-i18n="org4">BI-LO / Winn-Dixie · Jacksonville, FL</div>
+          <p data-i18n="desc4">Lead corporate analyst for the New Orleans region (~$1.7B revenue); a tobacco re-pricing analysis I initiated added $31M in annual revenue.</p>
         </div>
       </div>
     </div>
@@ -425,18 +426,18 @@ footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color
       <div class="contact-grid">
         <div class="reveal">
           <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
-          <h2 class="title" data-i18n="contactTitle">Let's make something warm.</h2>
-          <p class="lead" data-i18n="contactLead">Open to freelance projects and full-time roles. Tell me what you're building.</p>
+          <h2 class="title" data-i18n="contactTitle">Let's talk finance, risk, and AI.</h2>
+          <p class="lead" data-i18n="contactLead">Open to leadership and advisory work at the intersection of finance, risk, and AI. Reach out anytime.</p>
           <ul class="contact-links">
-            <li><a href="mailto:hello@scottfoster.com"><span class="dot"></span>hello@scottfoster.com</a></li>
-            <li><a href="#"><span class="dot"></span>linkedin.com/in/scottfoster</a></li>
-            <li><a href="#"><span class="dot"></span>github.com/scottfoster</a></li>
+            <li><a href="mailto:dsfiii7@gmail.com"><span class="dot"></span>dsfiii7@gmail.com</a></li>
+            <li><a href="tel:+19047186110"><span class="dot"></span>904-718-6110</a></li>
+            <li><span class="item"><span class="dot"></span>Jacksonville, FL</span></li>
           </ul>
         </div>
         <div class="form reveal">
           <div class="field"><label for="name" data-i18n="labelName">Name</label><input id="name" type="text" data-i18n-placeholder="phName" placeholder="Your name"></div>
           <div class="field"><label for="email" data-i18n="labelEmail">Email</label><input id="email" type="email" data-i18n-placeholder="phEmail" placeholder="you@email.com"></div>
-          <div class="field"><label for="msg" data-i18n="labelMsg">Message</label><textarea id="msg" data-i18n-placeholder="phMsg" placeholder="A little about your project…"></textarea></div>
+          <div class="field"><label for="msg" data-i18n="labelMsg">Message</label><textarea id="msg" data-i18n-placeholder="phMsg" placeholder="A little about what you're working on…"></textarea></div>
           <button class="btn btn-primary" id="sendBtn" type="button" data-i18n="sendBtn">Send message →</button>
           <p class="form-note" id="formNote" data-i18n="formNote">This is a demo form — connect it to your own email service or form handler to go live.</p>
         </div>
@@ -446,7 +447,7 @@ footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color
 </main>
 
 <footer>
-  <div class="wrap"><span data-i18n="footer">Designed &amp; built by Scott Foster · ©</span> <span id="year"></span></div>
+  <div class="wrap"><span data-i18n="footer">Scott Foster · Jacksonville, FL · ©</span> <span id="year"></span></div>
 </footer>
 
 <script>
@@ -462,125 +463,140 @@ footer{padding:34px 0;border-top:1px solid var(--border);text-align:center;color
     en:{
       docTitle:"Scott Foster — Risk Finance Executive & AI Solutions Architect",
       langLabel:"Click a flag to choose your language",
-      navAbout:"About",navSkills:"Skills",navProjects:"Projects",navExperience:"Experience",navContact:"Contact",
+      navAbout:"About",navSkills:"Skills",navProjects:"Highlights",navExperience:"Experience",navContact:"Contact",
       ariaTheme:"Switch color theme",ariaMenu:"Open menu",
       heroEyebrow:"Risk Finance Executive &amp; AI Solutions Architect",
-      heroTitle:'Designing interfaces that feel like<br><span class="gradient-text">golden hour.</span>',
-      heroIntro:"I shape clear, warm digital products — from first sketch to shipped code. Currently building design systems and the front-ends that bring them to life.",
-      ctaWork:"View my work →",ctaContact:"Get in touch",scrollHint:"Scroll ↓",
+      heroTitle:'Bringing AI to the frontier of<br><span class="gradient-text">financial risk.</span>',
+      heroIntro:"Corporate finance and business intelligence leader turning raw data into board-ready decisions — and pioneering the use of AI within enterprise risk management.",
+      ctaWork:"See my work →",ctaContact:"Get in touch",scrollHint:"Scroll ↓",
       aboutEyebrow:"About me",
-      aboutTitle:"A designer who codes, and a developer who sweats the details.",
-      aboutP1:"I'm Scott — a product designer based in Lisbon with eight years spent moving between Figma and the browser. I care most about the moment a rough idea clicks into something people actually want to use.",
-      aboutP2:'My work lives in the overlap: <strong>design systems, accessible interfaces, and the front-end craft</strong> that keeps a polished mockup polished once it ships. When I\'m not pushing pixels, I\'m chasing the light with a film camera.',
-      statYears:"Years designing",statProducts:"Products shipped",statSystems:"Design systems built",
+      aboutTitle:"A finance leader fluent in data, risk, and now AI.",
+      aboutP1:"I'm Scott Foster, a corporate finance and business intelligence leader based in Jacksonville, Florida, with an MBA in Finance &amp; Management from Fordham University. For two decades I've defined, collected, and translated complex financial and risk data into information any level of management can act on.",
+      aboutP2:"At Fidelity National Financial I'm <strong>pioneering AI development within the enterprise risk management group</strong>, where I led the first production use case for AI in the company's financial sensitivity models. My foundation is advanced financial modeling, SQL data warehousing, and the big-data platforms that turn raw information into decisions.",
+      statYears:"Years in finance &amp; risk",statProducts:"Reserve position modeled",statSystems:"AI use case in production",
       skillsEyebrow:"Skills",skillsTitle:"What I bring to the table.",
-      skillsLead:"A toolkit that spans the whole pipeline — from research and visual direction through to production-ready code.",
-      skillDesign:"Design",skillFront:"Front-end",skillCraft:"Craft &amp; tools",
-      chipSystems:"Design systems",chipProto:"Prototyping",chipUX:"UX research",chipA11y:"Accessibility",chipMotion:"Motion",chipTokens:"Design tokens",
-      projEyebrow:"Selected work",projTitle:"Projects I'm proud of.",
-      projLead:"A few recent builds where design and engineering met in the middle.",
-      tagBrand:"Brand",caseStudy:"Case study →",
-      proj1:"Rebuilt a consumer banking app's design system and shipped a 30% faster onboarding flow.",
-      proj2:"Designed and front-ended a dashboard handling real-time data for 10k daily users.",
-      proj3:"An award-shortlisted marketing site with scroll-driven motion and a custom CMS.",
+      skillsLead:"Two decades turning financial and risk data into decisions — now extended with applied AI.",
+      skillFin:"Finance &amp; Risk",skillAI:"AI &amp; Data",skillBI:"Business Intelligence",
+      c1a:"Financial modeling",c1b:"ORSA &amp; stress testing",c1c:"Reserve analysis",c1d:"Forecasting",c1e:"Budgeting",
+      c2a:"AI use cases",c2b:"Sensitivity modeling",c2d:"Data warehousing",c2e:"Big data",
+      projEyebrow:"Career highlights",projTitle:"Work I'm proud of.",
+      projLead:"A few initiatives where finance, risk, and technology came together.",
+      tag1:"AI",tag2:"Risk",tag3:"BI",
+      projT1:"AI in Sensitivity Models",
+      proj1:"Led the first production use case for AI in the company's financial sensitivity models — pioneering AI development across the enterprise risk group.",
+      projT2:"ORSA Stress Testing",
+      proj2:"Own all models and databases behind the Own Risk &amp; Solvency Assessment — the stress tests gauging how material risks affect the insurance group's solvency under Florida law.",
+      projT3:"Executive Risk Dashboards",
+      proj3:"Built BI models and dashboards uniting statutory, GAAP, operational and risk data for Risk, Finance and Legal leaders — plus the quarterly risk decks presented to the Board.",
       expEyebrow:"Experience",expTitle:"Where I've been.",
-      date1:"2022 — Present",
-      role1:"Senior Product Designer",org1:"Northlight · Lisbon",
-      desc1:"Lead designer for the core platform, owning the design system and partnering with engineering on every front-end release.",
-      role2:"Product Designer &amp; Front-End Dev",org2:"Tidemark Labs · Remote",
-      desc2:"Shipped six client products end to end, from research and UI through to React implementation.",
-      role3:"UI Designer",
-      desc3:"Designed marketing sites and brand systems for early-stage startups across Europe.",
-      contactEyebrow:"Contact",contactTitle:"Let's make something warm.",
-      contactLead:"Open to freelance projects and full-time roles. Tell me what you're building.",
+      date1:"2018 — Present",role1:"Sr. Financial Risk Analyst / AVP",org1:"Fidelity National Financial · Jacksonville, FL",
+      desc1:"Own the models behind the Own Risk &amp; Solvency Assessment and the quarterly Claims Memo on the company's ~$1.5B reserve position. Produce Board-level risk decks — and pioneer AI within the risk group.",
+      date2:"2016 — 2017",role2:"Sr. Business Analyst / Director of BI",org2:"Veterans Trading Company · Ocala, FL",
+      desc2:"Ran the SQL-based ERP and Power BI platform, built data warehouses from disparate systems, and modeled production and delivery for major defense programs.",
+      date3:"2014 — 2016",role3:"Sr. Business / Financial Analyst",org3:"Fanatics Inc. · Jacksonville, FL",
+      desc3:"Created the margin forecasting model — an interactive P&amp;L letting executives see the impact of decisions in real time — and revenue-share models for the major sports leagues.",
+      date4:"2006 — 2013",role4:"Sr. Financial &amp; Operations Analyst",org4:"BI-LO / Winn-Dixie · Jacksonville, FL",
+      desc4:"Lead corporate analyst for the New Orleans region (~$1.7B revenue); a tobacco re-pricing analysis I initiated added $31M in annual revenue.",
+      contactEyebrow:"Contact",contactTitle:"Let's talk finance, risk, and AI.",
+      contactLead:"Open to leadership and advisory work at the intersection of finance, risk, and AI. Reach out anytime.",
       labelName:"Name",labelEmail:"Email",labelMsg:"Message",
-      phName:"Your name",phEmail:"you@email.com",phMsg:"A little about your project…",
+      phName:"Your name",phEmail:"you@email.com",phMsg:"A little about what you're working on…",
       sendBtn:"Send message →",
       formNote:"This is a demo form — connect it to your own email service or form handler to go live.",
       formSent:"Thanks! This demo doesn't send yet — wire it up to your form handler.",
-      footer:"Designed &amp; built by Scott Foster · ©"
+      footer:"Scott Foster · Jacksonville, FL · ©"
     },
     es:{
       docTitle:"Scott Foster — Ejecutivo de Finanzas de Riesgo y Arquitecto de Soluciones de IA",
       langLabel:"Haz clic en una bandera para elegir tu idioma",
-      navAbout:"Sobre mí",navSkills:"Habilidades",navProjects:"Proyectos",navExperience:"Experiencia",navContact:"Contacto",
+      navAbout:"Sobre mí",navSkills:"Habilidades",navProjects:"Logros",navExperience:"Experiencia",navContact:"Contacto",
       ariaTheme:"Cambiar tema de color",ariaMenu:"Abrir menú",
       heroEyebrow:"Ejecutivo de Finanzas de Riesgo y Arquitecto de Soluciones de IA",
-      heroTitle:'Creando interfaces que se sienten como<br><span class="gradient-text">la hora dorada.</span>',
-      heroIntro:"Doy forma a productos digitales claros y cálidos — desde el primer boceto hasta el código en producción. Actualmente construyo sistemas de diseño y los front-ends que les dan vida.",
+      heroTitle:'Llevando la IA a la vanguardia del<br><span class="gradient-text">riesgo financiero.</span>',
+      heroIntro:"Líder en finanzas corporativas e inteligencia de negocio que convierte datos en bruto en decisiones a nivel directivo — y pionero en el uso de IA dentro de la gestión de riesgos empresariales.",
       ctaWork:"Ver mi trabajo →",ctaContact:"Contáctame",scrollHint:"Desliza ↓",
       aboutEyebrow:"Sobre mí",
-      aboutTitle:"Un diseñador que programa y un desarrollador que cuida cada detalle.",
-      aboutP1:"Soy Scott, diseñador de producto radicado en Lisboa con ocho años moviéndome entre Figma y el navegador. Lo que más me importa es el momento en que una idea en bruto se convierte en algo que la gente realmente quiere usar.",
-      aboutP2:'Mi trabajo vive en la intersección: <strong>sistemas de diseño, interfaces accesibles y el oficio del front-end</strong> que mantiene impecable un mockup cuando llega a producción. Cuando no estoy moviendo píxeles, persigo la luz con una cámara de película.',
-      statYears:"Años diseñando",statProducts:"Productos lanzados",statSystems:"Sistemas de diseño creados",
+      aboutTitle:"Un líder financiero fluido en datos, riesgo y ahora IA.",
+      aboutP1:"Soy Scott Foster, líder en finanzas corporativas e inteligencia de negocio radicado en Jacksonville, Florida, con un MBA en Finanzas y Gestión por la Universidad de Fordham. Durante dos décadas he definido, recopilado y traducido datos financieros y de riesgo complejos en información sobre la que puede actuar cualquier nivel de la dirección.",
+      aboutP2:"En Fidelity National Financial soy <strong>pionero en el desarrollo de IA dentro del grupo de gestión de riesgos empresariales</strong>, donde lideré el primer caso de uso en producción de IA en los modelos de sensibilidad financiera de la empresa. Mi base es el modelado financiero avanzado, los almacenes de datos en SQL y las plataformas de big data que convierten la información en bruto en decisiones.",
+      statYears:"Años en finanzas y riesgo",statProducts:"Posición de reservas modelada",statSystems:"Caso de uso de IA en producción",
       skillsEyebrow:"Habilidades",skillsTitle:"Lo que aporto.",
-      skillsLead:"Un conjunto de herramientas que abarca todo el proceso — desde la investigación y la dirección visual hasta el código listo para producción.",
-      skillDesign:"Diseño",skillFront:"Front-end",skillCraft:"Oficio y herramientas",
-      chipSystems:"Sistemas de diseño",chipProto:"Prototipado",chipUX:"Investigación UX",chipA11y:"Accesibilidad",chipMotion:"Animación",chipTokens:"Tokens de diseño",
-      projEyebrow:"Trabajo seleccionado",projTitle:"Proyectos de los que estoy orgulloso.",
-      projLead:"Algunos proyectos recientes donde el diseño y la ingeniería se encontraron a medio camino.",
-      tagBrand:"Marca",caseStudy:"Ver caso →",
-      proj1:"Rediseñé el sistema de diseño de una app bancaria y lancé un onboarding un 30% más rápido.",
-      proj2:"Diseñé y desarrollé el front-end de un panel con datos en tiempo real para 10 mil usuarios diarios.",
-      proj3:"Un sitio de marketing finalista de premios, con animación al hacer scroll y un CMS a medida.",
-      expEyebrow:"Experiencia",expTitle:"Dónde he estado.",
-      date1:"2022 — Actualidad",
-      role1:"Diseñador de Producto Senior",org1:"Northlight · Lisboa",
-      desc1:"Diseñador principal de la plataforma central, responsable del sistema de diseño y socio de ingeniería en cada lanzamiento de front-end.",
-      role2:"Diseñador de Producto y Dev Front-End",org2:"Tidemark Labs · Remoto",
-      desc2:"Lancé seis productos para clientes de principio a fin, desde la investigación y la UI hasta la implementación en React.",
-      role3:"Diseñador de UI",
-      desc3:"Diseñé sitios de marketing y sistemas de marca para startups en etapa inicial por toda Europa.",
-      contactEyebrow:"Contacto",contactTitle:"Hagamos algo cálido.",
-      contactLead:"Disponible para proyectos freelance y puestos a tiempo completo. Cuéntame qué estás construyendo.",
+      skillsLead:"Dos décadas convirtiendo datos financieros y de riesgo en decisiones — ahora ampliadas con IA aplicada.",
+      skillFin:"Finanzas y Riesgo",skillAI:"IA y Datos",skillBI:"Inteligencia de Negocio",
+      c1a:"Modelado financiero",c1b:"ORSA y pruebas de estrés",c1c:"Análisis de reservas",c1d:"Proyecciones",c1e:"Presupuestos",
+      c2a:"Casos de uso de IA",c2b:"Modelado de sensibilidad",c2d:"Almacenes de datos",c2e:"Big data",
+      projEyebrow:"Logros destacados",projTitle:"Trabajo del que estoy orgulloso.",
+      projLead:"Algunas iniciativas donde las finanzas, el riesgo y la tecnología se unieron.",
+      tag1:"IA",tag2:"Riesgo",tag3:"BI",
+      projT1:"IA en modelos de sensibilidad",
+      proj1:"Lideré el primer caso de uso en producción de IA en los modelos de sensibilidad financiera de la empresa, siendo pionero en el desarrollo de IA en todo el grupo de riesgos.",
+      projT2:"Pruebas de estrés ORSA",
+      proj2:"Responsable de todos los modelos y bases de datos del Own Risk &amp; Solvency Assessment — las pruebas de estrés que miden cómo los riesgos materiales afectan la solvencia del grupo asegurador según la ley de Florida.",
+      projT3:"Paneles de riesgo para directivos",
+      proj3:"Construí modelos y paneles de BI que unen datos estatutarios, GAAP, operativos y de riesgo para líderes de Riesgo, Finanzas y Legal — además de los informes trimestrales de riesgo presentados al Consejo.",
+      expEyebrow:"Experiencia",expTitle:"Mi trayectoria.",
+      date1:"2018 — Actualidad",role1:"Analista Sr. de Riesgo Financiero / AVP",org1:"Fidelity National Financial · Jacksonville, FL",
+      desc1:"Responsable de los modelos del Own Risk &amp; Solvency Assessment y del Claims Memo trimestral sobre la posición de reservas de ~$1.5 mil millones. Elaboro informes de riesgo para el Consejo — y lidero la adopción de IA en el grupo de riesgos.",
+      date2:"2016 — 2017",role2:"Analista Sr. de Negocio / Director de BI",org2:"Veterans Trading Company · Ocala, FL",
+      desc2:"Gestioné el ERP basado en SQL y la plataforma Power BI, construí almacenes de datos a partir de sistemas dispares y modelé la producción y entrega de importantes programas de defensa.",
+      date3:"2014 — 2016",role3:"Analista Sr. de Negocio / Financiero",org3:"Fanatics Inc. · Jacksonville, FL",
+      desc3:"Creé el modelo de previsión de márgenes — un P&amp;L interactivo que permite a los directivos ver el impacto de sus decisiones en tiempo real — y modelos de reparto de ingresos para las principales ligas deportivas.",
+      date4:"2006 — 2013",role4:"Analista Sr. Financiero y de Operaciones",org4:"BI-LO / Winn-Dixie · Jacksonville, FL",
+      desc4:"Analista corporativo principal para la región de Nueva Orleans (~$1.7 mil millones en ingresos); un análisis de revisión de precios del tabaco que inicié añadió $31 millones en ingresos anuales.",
+      contactEyebrow:"Contacto",contactTitle:"Hablemos de finanzas, riesgo e IA.",
+      contactLead:"Disponible para roles de liderazgo y asesoría en la intersección de finanzas, riesgo e IA. Escríbeme cuando quieras.",
       labelName:"Nombre",labelEmail:"Correo",labelMsg:"Mensaje",
-      phName:"Tu nombre",phEmail:"tu@correo.com",phMsg:"Algo sobre tu proyecto…",
+      phName:"Tu nombre",phEmail:"tu@correo.com",phMsg:"Algo sobre lo que estás trabajando…",
       sendBtn:"Enviar mensaje →",
       formNote:"Este es un formulario de demostración: conéctalo a tu propio servicio de correo o gestor de formularios para activarlo.",
       formSent:"¡Gracias! Esta demo aún no envía — conéctala a tu gestor de formularios.",
-      footer:"Diseñado y construido por Scott Foster · ©"
+      footer:"Scott Foster · Jacksonville, FL · ©"
     },
     pt:{
       docTitle:"Scott Foster — Executivo de Finanças de Risco e Arquiteto de Soluções de IA",
       langLabel:"Clique em uma bandeira para escolher seu idioma",
-      navAbout:"Sobre",navSkills:"Habilidades",navProjects:"Projetos",navExperience:"Experiência",navContact:"Contato",
+      navAbout:"Sobre",navSkills:"Habilidades",navProjects:"Destaques",navExperience:"Experiência",navContact:"Contato",
       ariaTheme:"Alternar tema de cor",ariaMenu:"Abrir menu",
       heroEyebrow:"Executivo de Finanças de Risco e Arquiteto de Soluções de IA",
-      heroTitle:'Criando interfaces que parecem a<br><span class="gradient-text">hora dourada.</span>',
-      heroIntro:"Dou forma a produtos digitais claros e acolhedores — do primeiro esboço ao código em produção. Atualmente construo design systems e os front-ends que lhes dão vida.",
+      heroTitle:'Levando a IA à fronteira do<br><span class="gradient-text">risco financeiro.</span>',
+      heroIntro:"Líder em finanças corporativas e business intelligence que transforma dados brutos em decisões de nível executivo — e pioneiro no uso de IA na gestão de riscos corporativos.",
       ctaWork:"Ver meu trabalho →",ctaContact:"Fale comigo",scrollHint:"Role ↓",
       aboutEyebrow:"Sobre mim",
-      aboutTitle:"Um designer que programa e um desenvolvedor que cuida de cada detalhe.",
-      aboutP1:"Sou Scott, designer de produto baseado em Lisboa, com oito anos transitando entre o Figma e o navegador. O que mais me importa é o momento em que uma ideia bruta vira algo que as pessoas realmente querem usar.",
-      aboutP2:'Meu trabalho vive na interseção: <strong>design systems, interfaces acessíveis e o ofício do front-end</strong> que mantém um mockup impecável quando vai para produção. Quando não estou mexendo em pixels, persigo a luz com uma câmera de filme.',
-      statYears:"Anos desenhando",statProducts:"Produtos lançados",statSystems:"Design systems criados",
+      aboutTitle:"Um líder financeiro fluente em dados, risco e agora IA.",
+      aboutP1:"Sou Scott Foster, líder em finanças corporativas e business intelligence baseado em Jacksonville, Flórida, com MBA em Finanças e Gestão pela Universidade Fordham. Por duas décadas defini, reuni e traduzi dados financeiros e de risco complexos em informações sobre as quais qualquer nível de gestão pode agir.",
+      aboutP2:"Na Fidelity National Financial sou <strong>pioneiro no desenvolvimento de IA dentro do grupo de gestão de riscos corporativos</strong>, onde liderei o primeiro caso de uso em produção de IA nos modelos de sensibilidade financeira da empresa. Minha base é a modelagem financeira avançada, o data warehousing em SQL e as plataformas de big data que transformam informação bruta em decisões.",
+      statYears:"Anos em finanças e risco",statProducts:"Posição de reservas modelada",statSystems:"Caso de uso de IA em produção",
       skillsEyebrow:"Habilidades",skillsTitle:"O que eu trago.",
-      skillsLead:"Um conjunto de ferramentas que abrange todo o processo — da pesquisa e direção visual ao código pronto para produção.",
-      skillDesign:"Design",skillFront:"Front-end",skillCraft:"Ofício e ferramentas",
-      chipSystems:"Design systems",chipProto:"Prototipagem",chipUX:"Pesquisa UX",chipA11y:"Acessibilidade",chipMotion:"Animação",chipTokens:"Design tokens",
-      projEyebrow:"Trabalhos selecionados",projTitle:"Projetos dos quais me orgulho.",
-      projLead:"Alguns projetos recentes onde design e engenharia se encontraram no meio do caminho.",
-      tagBrand:"Marca",caseStudy:"Ver case →",
-      proj1:"Reconstruí o design system de um app bancário e entreguei um onboarding 30% mais rápido.",
-      proj2:"Desenhei e desenvolvi o front-end de um painel com dados em tempo real para 10 mil usuários diários.",
-      proj3:"Um site de marketing finalista de prêmios, com animação ao rolar e um CMS sob medida.",
-      expEyebrow:"Experiência",expTitle:"Por onde passei.",
-      date1:"2022 — Atual",
-      role1:"Designer de Produto Sênior",org1:"Northlight · Lisboa",
-      desc1:"Designer principal da plataforma central, responsável pelo design system e parceiro da engenharia em cada release de front-end.",
-      role2:"Designer de Produto e Dev Front-End",org2:"Tidemark Labs · Remoto",
-      desc2:"Entreguei seis produtos para clientes de ponta a ponta, da pesquisa e UI até a implementação em React.",
-      role3:"Designer de UI",
-      desc3:"Desenhei sites de marketing e sistemas de marca para startups em estágio inicial por toda a Europa.",
-      contactEyebrow:"Contato",contactTitle:"Vamos criar algo acolhedor.",
-      contactLead:"Disponível para projetos freelance e vagas em tempo integral. Conte-me o que você está construindo.",
+      skillsLead:"Duas décadas transformando dados financeiros e de risco em decisões — agora ampliadas com IA aplicada.",
+      skillFin:"Finanças e Risco",skillAI:"IA e Dados",skillBI:"Business Intelligence",
+      c1a:"Modelagem financeira",c1b:"ORSA e testes de estresse",c1c:"Análise de reservas",c1d:"Previsão",c1e:"Orçamento",
+      c2a:"Casos de uso de IA",c2b:"Modelagem de sensibilidade",c2d:"Data warehousing",c2e:"Big data",
+      projEyebrow:"Principais destaques",projTitle:"Trabalhos dos quais me orgulho.",
+      projLead:"Algumas iniciativas onde finanças, risco e tecnologia se uniram.",
+      tag1:"IA",tag2:"Risco",tag3:"BI",
+      projT1:"IA em modelos de sensibilidade",
+      proj1:"Liderei o primeiro caso de uso em produção de IA nos modelos de sensibilidade financeira da empresa, sendo pioneiro no desenvolvimento de IA em todo o grupo de riscos.",
+      projT2:"Testes de estresse ORSA",
+      proj2:"Responsável por todos os modelos e bancos de dados do Own Risk &amp; Solvency Assessment — os testes de estresse que medem como riscos materiais afetam a solvência do grupo segurador segundo a lei da Flórida.",
+      projT3:"Painéis de risco para executivos",
+      proj3:"Construí modelos e painéis de BI que unem dados estatutários, GAAP, operacionais e de risco para líderes de Risco, Finanças e Jurídico — além dos relatórios trimestrais de risco apresentados ao Conselho.",
+      expEyebrow:"Experiência",expTitle:"Minha trajetória.",
+      date1:"2018 — Atual",role1:"Analista Sênior de Risco Financeiro / AVP",org1:"Fidelity National Financial · Jacksonville, FL",
+      desc1:"Responsável pelos modelos do Own Risk &amp; Solvency Assessment e pelo Claims Memo trimestral sobre a posição de reservas de ~US$ 1,5 bilhão. Produzo relatórios de risco para o Conselho — e lidero a adoção de IA no grupo de riscos.",
+      date2:"2016 — 2017",role2:"Analista Sênior de Negócios / Diretor de BI",org2:"Veterans Trading Company · Ocala, FL",
+      desc2:"Gerenciei o ERP baseado em SQL e a plataforma Power BI, construí data warehouses a partir de sistemas distintos e modelei a produção e entrega de grandes programas de defesa.",
+      date3:"2014 — 2016",role3:"Analista Sênior de Negócios / Financeiro",org3:"Fanatics Inc. · Jacksonville, FL",
+      desc3:"Criei o modelo de previsão de margens — um P&amp;L interativo que permite aos executivos ver o impacto das decisões em tempo real — e modelos de divisão de receita para as principais ligas esportivas.",
+      date4:"2006 — 2013",role4:"Analista Sênior Financeiro e de Operações",org4:"BI-LO / Winn-Dixie · Jacksonville, FL",
+      desc4:"Analista corporativo principal da região de Nova Orleans (~US$ 1,7 bilhão em receita); uma análise de reprecificação de tabaco que iniciei adicionou US$ 31 milhões em receita anual.",
+      contactEyebrow:"Contato",contactTitle:"Vamos falar de finanças, risco e IA.",
+      contactLead:"Disponível para posições de liderança e consultoria na interseção de finanças, risco e IA. Entre em contato quando quiser.",
       labelName:"Nome",labelEmail:"E-mail",labelMsg:"Mensagem",
-      phName:"Seu nome",phEmail:"voce@email.com",phMsg:"Um pouco sobre seu projeto…",
+      phName:"Seu nome",phEmail:"voce@email.com",phMsg:"Um pouco sobre o que você está fazendo…",
       sendBtn:"Enviar mensagem →",
       formNote:"Este é um formulário de demonstração: conecte-o ao seu próprio serviço de e-mail ou gerenciador de formulários para ativá-lo.",
       formSent:"Obrigado! Esta demo ainda não envia — conecte-a ao seu gerenciador de formulários.",
-      footer:"Projetado e construído por Scott Foster · ©"
+      footer:"Scott Foster · Jacksonville, FL · ©"
     }
   };
 
